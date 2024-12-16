@@ -3,20 +3,18 @@ import json
 import psycopg2
 from kafka import KafkaProducer
 
-# Kafka Configuration
-KAFKA_BROKER = "kafka:9092"  # Change to your Kafka broker address
+
+KAFKA_BROKER = "kafka:9092"  
 KAFKA_TOPIC = "transactions"
 
 DB_CONFIG = {
-    "host": "postgres",       # Service name as hostname
-    "port": 5432,             # Port number for PostgreSQL
-    "database": "db-name",    # Your database name
-    "user": "login",          # Your database user
-    "password": "pass"        # Your database password
+    "host": "postgres",       
+    "port": 5432,             
+    "database": "db-name",    
+    "user": "login",          
+    "password": "pass"        
 }
 
-
-# Retry logic for database connection
 def wait_for_postgres():
     retries = 5
     while retries > 0:
@@ -30,7 +28,7 @@ def wait_for_postgres():
             retries -= 1
     raise Exception("Failed to connect to the database after multiple retries")
 
-# Function to fetch transactions
+
 def fetch_transactions():
     try:
         connection = wait_for_postgres()
@@ -50,7 +48,6 @@ def fetch_transactions():
             connection.close()
 
 
-# Function to send data to Kafka topic
 def send_to_kafka(producer, transactions):
     for transaction in transactions:
         message = {

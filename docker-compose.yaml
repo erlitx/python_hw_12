@@ -4,11 +4,11 @@ services:
     image: jupyter/pyspark-notebook:latest
     container_name: jupyter-spark
     ports:
-      - "8888:8888"  # Jupyter Notebook UI
+      - "8888:8888"  
     volumes:
-      - ./notebooks:/home/jovyan/work  # Mount local notebook directory
+      - ./notebooks:/home/jovyan/work  
     environment:
-      - JUPYTER_ENABLE_LAB=yes  # Enable JupyterLab UI
+      - JUPYTER_ENABLE_LAB=yes  
 
   postgres:
     container_name: postgres

@@ -12,7 +12,7 @@ SUSPICIOUS_TOPIC = "suspicious"
 
 # PostgreSQL configuration
 DB_CONFIG = {
-    "host": "postgres",  # Service name as hostname in Docker
+    "host": "postgres",  
     "port": 5432,
     "database": "db-name",
     "user": "login",
@@ -20,8 +20,8 @@ DB_CONFIG = {
 }
 
 # Thresholds
-TRANSACTION_THRESHOLD = 1000  # USD
-SUSPICIOUS_HOURS = (23, 5)  # Between 11 PM to 5 AM
+TRANSACTION_THRESHOLD = 1000  
+SUSPICIOUS_HOURS = (23, 5)  
 
 def main():
     # Initialize Kafka Producer
@@ -44,7 +44,7 @@ def main():
             if connection:
                 connection.close()
 
-    # User data as a dictionary (user_id -> user info)
+
     user_data = fetch_user_data()
 
     # Define Spark session
